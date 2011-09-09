@@ -21,6 +21,25 @@
 			  paddingRight="20">
 		<s:Label text="API Methods" fontSize="16"/>
 		<s:ComboBox id="comboAllMethods" 
-					width="100%"/>
+					width="100%"
+					labelField="signature"/>
 	</s:VGroup>
+	
+	<s:VGroup width="100%"
+			  paddingLeft="20"
+			  paddingRight="20">
+		<s:Label text="Description:"/>
+		<s:TextArea width="100%" height="100" editable="false"/>
+	</s:VGroup>
+	
+	<s:VGroup width="100%"
+			  height="200"
+			  paddingLeft="20"
+			  paddingRight="20">
+		<s:Label text="Parameters:"/>
+		
+	</s:VGroup>
+	
+	<s:Button id="buttonSend"/>
+	
 </s:NavigatorContent>

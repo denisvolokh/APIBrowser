@@ -44,9 +44,15 @@ package com.elanceapibrowser.services
 			var projectObject:Object = JSON.decode(event.result as String);
 			for (var p : String in projectObject["data"])
 			{
-				trace(p);
-				var m : Method = new Method();
-				m.label = p;
+				var m : Object = projectObject["data"][p];
+				var method : Method = new Method();
+				for (var prop : String in m)
+				{
+					if (method.hasOwnProperty(prop))
+					{
+						method[prop] = m[prop];
+					}
+				}
 				model.allMethodsCollection.addItem(m);
 			}
 			
