@@ -1,6 +1,8 @@
 package com.elanceapibrowser
 {
 	import com.elanceapibrowser.commands.GetAllMethodsCommand;
+	import com.elanceapibrowser.components.HistoryPanel;
+	import com.elanceapibrowser.components.HistoryPanelMediator;
 	import com.elanceapibrowser.components.RequestNavContainer;
 	import com.elanceapibrowser.components.RequestNavContainerMediator;
 	import com.elanceapibrowser.events.GetAllMethodsEvent;
@@ -24,6 +26,7 @@ package com.elanceapibrowser
 			injector.mapSingleton(AppModel);
 			
 			mediatorMap.mapView(RequestNavContainer, RequestNavContainerMediator);
+			mediatorMap.mapView(HistoryPanel, HistoryPanelMediator);
 			
 			injector.mapSingletonOf(IGetAllMethodsService, GetAllMethodsService);
 			

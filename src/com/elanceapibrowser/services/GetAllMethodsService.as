@@ -35,6 +35,8 @@ package com.elanceapibrowser.services
 		public function load(... params):void
 		{
 			service.send();
+			
+			model.historyCollection.addItem("new method");
 		}
 		
 		protected function onResultHandler(event : ResultEvent):void
