@@ -20,7 +20,8 @@
 			height="100%"/>
 	
 	<s:HGroup width="100%" horizontalAlign="right">
-		<s:Button label="Clear History"/>
+		<s:Button id="buttonClearHistory" 
+				  label="Clear History"/>
 	</s:HGroup>
 	
 </s:Group>

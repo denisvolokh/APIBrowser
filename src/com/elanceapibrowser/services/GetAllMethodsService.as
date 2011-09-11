@@ -55,7 +55,7 @@ package com.elanceapibrowser.services
 						method[prop] = m[prop];
 					}
 				}
-				model.allMethodsCollection.addItem(m);
+				model.allMethodsCollection.addItem(method);
 			}
 			
 			dispatch(new GetAllMethodsEvent(GetAllMethodsEvent.EVENT_GET_ALL_METHODS_RESULT));

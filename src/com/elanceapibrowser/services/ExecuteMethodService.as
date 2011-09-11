@@ -1,5 +1,6 @@
 package com.elanceapibrowser.services
 {
+	import com.elanceapibrowser.events.ExecuteMethodEvent;
 	import com.elanceapibrowser.model.AppModel;
 	
 	import org.robotlegs.mvcs.Actor;
@@ -17,6 +18,8 @@ package com.elanceapibrowser.services
 		public function load(...params):void
 		{
 			model.historyCollection.addItem("new method");
+			
+			this.dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD_RESULT));
 		}
 	}
 }

@@ -13,7 +13,8 @@
 						  paddingLeft="20"
 						  paddingRight="20"
 						  paddingBottom="20"
-						  verticalAlign="top"/>
+						  verticalAlign="top"
+						  gap="10"/>
 	</s:layout>
 	
 	<s:VGroup width="100%"
@@ -25,19 +26,34 @@
 					labelField="signature"/>
 	</s:VGroup>
 	
+	<s:Label id="labelSelectedMethod"
+			 paddingLeft="30"
+			 fontSize="14"/>
+	
+	<s:Spacer height="20"/>
 	<s:VGroup width="100%"
 			  paddingLeft="20"
 			  paddingRight="20">
-		<s:Label text="Description:"/>
+		<s:Label text="Description:" fontSize="16"/>
 		<s:TextArea width="100%" height="100" editable="false"/>
 	</s:VGroup>
 	
+	<s:Spacer height="20"/>
 	<s:VGroup width="100%"
 			  height="200"
 			  paddingLeft="20"
 			  paddingRight="20">
-		<s:Label text="Parameters:"/>
-		
+		<s:Label text="Parameters:" fontSize="16"/>
+		<s:VGroup width="100%">
+			<s:Form width="100%">
+				<s:FormItem label="Invoice ID:">
+					<s:TextInput />
+				</s:FormItem>
+				<s:FormItem label="App ID:">
+					<s:TextInput />
+				</s:FormItem>
+			</s:Form>			
+		</s:VGroup>
 	</s:VGroup>
 	
 	<s:Button id="buttonSend"/>
