@@ -4,6 +4,7 @@ package com.elanceapibrowser.services
 	import com.elanceapibrowser.events.GetAllMethodsEvent;
 	import com.elanceapibrowser.model.AppModel;
 	import com.elanceapibrowser.model.Method;
+	import com.elanceapibrowser.model.MethodParams;
 	
 	import flash.display.Loader;
 	import flash.net.URLRequest;
@@ -14,32 +15,24 @@ package com.elanceapibrowser.services
 	
 	import org.robotlegs.mvcs.Actor;
 
-	public class GetAllMethodsService extends Actor implements IGetAllMethodsService
+	public class GetAllMethodsService extends BasicService implements IGetAllMethodsService
 	{
-		protected var service : HTTPService;
-		
-		[Inject]
-		public var model : AppModel;
 		
 		public function GetAllMethodsService()
 		{
-			service = new HTTPService();
-			service.method = "POST";
-			service.useProxy = false;
-			service.showBusyCursor = true;
-			service.url = "https://externaldev.elance.com:15069/api2/reflection/apis"
-			service.addEventListener(ResultEvent.RESULT, onResultHandler);
-			service.addEventListener(FaultEvent.FAULT, onFaultHandler);
+			super();
+			
+			service.url = AppModel.apiBaseUrl + "reflection/apis";
 		}
 		
-		public function load(... params):void
+		override public function load(params : MethodParams):void
 		{
 			service.send();
 			
 			model.historyCollection.addItem("new method");
 		}
 		
-		protected function onResultHandler(event : ResultEvent):void
+		override protected function onResultHandler(event : ResultEvent):void
 		{
 			removeListeners();
 			
@@ -61,7 +54,7 @@ package com.elanceapibrowser.services
 			dispatch(new GetAllMethodsEvent(GetAllMethodsEvent.EVENT_GET_ALL_METHODS_RESULT));
 		}
 		
-		protected function onFaultHandler(event : FaultEvent):void
+		override protected function onFaultHandler(event : FaultEvent):void
 		{
 			removeListeners();
 			

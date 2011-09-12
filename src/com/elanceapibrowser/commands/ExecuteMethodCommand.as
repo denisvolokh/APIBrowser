@@ -20,7 +20,7 @@ package com.elanceapibrowser.commands
 		
 		override public function execute():void
 		{
-			service.load();	
+			service.load(event.params);	
 		}
 	}
 }

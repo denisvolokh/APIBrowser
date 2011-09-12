@@ -4,6 +4,7 @@ package com.elanceapibrowser.components
 	import com.elanceapibrowser.events.GetAllMethodsEvent;
 	import com.elanceapibrowser.model.AppModel;
 	import com.elanceapibrowser.model.Method;
+	import com.elanceapibrowser.model.MethodParams;
 	
 	import flash.events.MouseEvent;
 	
@@ -27,6 +28,8 @@ package com.elanceapibrowser.components
 		[Inject]
 		public var model : AppModel;
 		
+		private var selectedMethod : Method;
+		
 		override public function onRegister():void
 		{
 			eventMap.mapListener(eventDispatcher, GetAllMethodsEvent.EVENT_GET_ALL_METHODS_RESULT, handleGetAllMethodsResult);
@@ -38,14 +41,17 @@ package com.elanceapibrowser.components
 		
 		private function handleComboAllMethods(event : IndexChangeEvent):void
 		{
-			var selectedMethod : Method = view.comboAllMethods.selectedItem as Method;
+			selectedMethod = view.comboAllMethods.selectedItem as Method;
 			
 			view.labelSelectedMethod.text = selectedMethod.fullPath;
 		}
 		
 		private function handleButtonSend(event : *):void
 		{
-			dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD));
+			var params : MethodParams = new MethodParams;
+			params.fullpath = selectedMethod.fullPath;
+			params.signature = selectedMethod.signature;
+			dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD, params));
 		}
 		
 		private function handleGetAllMethodsResult(event : GetAllMethodsEvent):void

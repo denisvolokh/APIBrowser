@@ -16,11 +16,12 @@ package com.elanceapibrowser.commands
 		[Inject]
 		public var service : IGetAllMethodsService;
 		
+		[Inject]
 		public var event : GetAllMethodsEvent;
 		
 		override public function execute():void
 		{
-			service.load();
+			service.load(event.params);
 		}
 	}
 }

@@ -1,5 +1,7 @@
 package com.elanceapibrowser.events
 {
+	import com.elanceapibrowser.model.MethodParams;
+	
 	import flash.events.Event;
 	
 	public class ExecuteMethodEvent extends Event
@@ -8,14 +10,18 @@ package com.elanceapibrowser.events
 		public static const EVENT_EXECUTE_METHOD_RESULT : String = "executeMethodResultEvent";
 		public static const EVENT_EXECUTE_METHOD_FAULT : String = "executeMethodFaultEvent";
 		
-		public function ExecuteMethodEvent(type:String)
+		public var params : MethodParams;
+		
+		public function ExecuteMethodEvent(type:String, params : MethodParams = null)
 		{
 			super(type, true, false);
+			
+			this.params = params
 		}
 		
 		override public function clone():Event
 		{
-			return new ExecuteMethodEvent(type);
+			return new ExecuteMethodEvent(type, this.params);
 		}
 	}
 }

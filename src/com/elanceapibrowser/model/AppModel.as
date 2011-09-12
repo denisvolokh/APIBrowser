@@ -17,6 +17,8 @@ package com.elanceapibrowser.model
 			historyCollection.addEventListener(CollectionEvent.COLLECTION_CHANGE, handleHistoryCollectionChanged);
 		}
 		
+		public static var apiBaseUrl : String = "https://externaldev.elance.com:15069/api2/";
+		
 		public var allMethodsCollection : ArrayCollection = new ArrayCollection;
 		
 		public var historyCollection : ArrayCollection;
