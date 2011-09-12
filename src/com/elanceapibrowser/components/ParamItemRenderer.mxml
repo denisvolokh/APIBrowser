@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100">
+
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			public var paramName : String;
+			
+			protected function linkParamLink_clickHandler(event:MouseEvent):void
+			{
+				currentState="EDIT"
+			}
+			
+			protected function state1_enterStateHandler(event:FlexEvent):void
+			{
+				inputParamValue.setFocus();
+			}
+			
+			protected function inputParamValue_focusOutHandler(event:FocusEvent):void
+			{
+				if (inputParamValue.text == "")
+				{
+					currentState = "INIT";
+				}
+			}
+			
+		]]>
+	</fx:Script>
+
+
+	<s:layout>
+		<s:HorizontalLayout paddingLeft="5"
+							paddingRight="5"/>
+	</s:layout>
+
+	<mx:LinkButton id="linkParamLink"
+				   label="{ paramName }"
+				   includeIn="INIT"
+				   click="linkParamLink_clickHandler(event)"
+				   textDecoration="underline"
+				   toolTip="Invoice ID"/>
+
+	<s:TextInput id="inputParamValue"
+				 includeIn="EDIT"
+				 width="100%"
+				 textAlign="center"
+				 focusOut="inputParamValue_focusOutHandler(event)"/>
+
+	<s:states>
+		<s:State name="INIT"/>
+		<s:State name="EDIT"
+				 enterState="state1_enterStateHandler(event)"/>
+	</s:states>
+
+</s:Group>

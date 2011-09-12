@@ -3,18 +3,18 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx" 
 		 width="100%" height="100%"
-		 label="Request">
+		 label="Request" xmlns:components="com.elanceapibrowser.components.*">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	
 	<s:layout>
-		<s:VerticalLayout paddingTop="20"
+		<s:VerticalLayout paddingTop="10"
 						  paddingLeft="20"
 						  paddingRight="20"
-						  paddingBottom="20"
+						  paddingBottom="5"
 						  verticalAlign="top"
-						  gap="10"/>
+						  gap="0"/>
 	</s:layout>
 	
 	<s:VGroup width="100%"
@@ -26,9 +26,13 @@
 					labelField="signature"/>
 	</s:VGroup>
 	
-	<s:Label id="labelSelectedMethod"
-			 paddingLeft="30"
-			 fontSize="14"/>
+	<s:Spacer height="10"/>
+	<s:HGroup verticalAlign="middle"
+			  width="100%"
+			  paddingLeft="20">
+		<components:QueryBuilderComponent id="queryBuilder"/>
+	</s:HGroup>
+	
 	
 	<s:Spacer height="20"/>
 	<s:VGroup width="100%"
@@ -40,7 +44,6 @@
 	
 	<s:Spacer height="20"/>
 	<s:VGroup width="100%"
-			  height="200"
 			  paddingLeft="20"
 			  paddingRight="20">
 		<s:Label text="Parameters:" fontSize="16"/>
@@ -56,6 +59,12 @@
 		</s:VGroup>
 	</s:VGroup>
 	
-	<s:Button id="buttonSend"/>
+	<s:Spacer height="100%"/>
+	<s:HGroup width="100%"
+			  horizontalAlign="right">
+		<s:Button id="buttonSend"
+				  label="Send"
+				  enabled="false"/>	
+	</s:HGroup>
 	
 </s:NavigatorContent>
