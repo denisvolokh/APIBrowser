@@ -34,7 +34,7 @@ package com.elanceapibrowser.services
 		
 		override protected function onResultHandler(event : ResultEvent):void
 		{
-			removeListeners();
+			super.onResultHandler(event);
 			
 			var projectObject:Object = JSON.decode(event.result as String);
 			for (var p : String in projectObject["data"])
@@ -56,7 +56,7 @@ package com.elanceapibrowser.services
 		
 		override protected function onFaultHandler(event : FaultEvent):void
 		{
-			removeListeners();
+			super.onFaultHandler(event);
 			
 		}
 		

@@ -28,11 +28,15 @@ package com.elanceapibrowser.services
 		
 		override protected function onResultHandler(event : ResultEvent):void
 		{
+			super.onResultHandler(event);
+			
 			this.dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD_RESULT));
 		}
 		
 		override protected function onFaultHandler(event : FaultEvent):void
 		{
+			super.onFaultHandler(event);
+			
 			this.dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD_FAULT));
 		}
 	}

@@ -61,7 +61,13 @@
 	
 	<s:Spacer height="100%"/>
 	<s:HGroup width="100%"
-			  horizontalAlign="right">
+			  horizontalAlign="right"
+			  verticalAlign="middle">
+		<s:HGroup gap="5"
+				  width="100%">
+			<s:Label text="Preview Url:" fontSize="14"/>	
+			<s:Label id="lblPreviewUrl" text="/api/reguest?q=1&amp;w=2" fontSize="14"/>
+		</s:HGroup>
 		<s:Button id="buttonSend"
 				  label="Send"
 				  enabled="false"/>	

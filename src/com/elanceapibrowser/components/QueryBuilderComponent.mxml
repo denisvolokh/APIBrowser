@@ -8,34 +8,41 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.elanceapibrowser.model.Method;
+			
 			import mx.controls.Label;
 			
-		private var _templateUrl : String;
+			private var _queryParams : Array;
 			
-		public function get templateUrl():String
-		{
-			return _templateUrl;
-		}
-
-		public function set templateUrl(value:String):void
-		{
-			_templateUrl = value;
+			public function set queryParams(value : Array):void
+			{
+				_queryParams = value;
+			}
 			
-			renderQuery();
-		}
-
-		private function renderQuery():void
-		{
-			this.removeAllElements();
-			
-			var lbl : Label = new Label;
-			lbl.text = _templateUrl;
-			addElement(lbl);
-			
-			var render : ParamItemRenderer = new ParamItemRenderer;
-			render.paramName = "ID";
-			addElement(render);
-		}
+			private var _method : Method;
+	
+			public function set method(value:Method):void
+			{
+				_method = value;
+				
+				renderQuery();
+			}
+	
+			private function renderQuery():void
+			{
+				this.removeAllElements();
+				
+				if (_method.fullPath.indexOf("{") > -1 && _method.fullPath.indexOf("}") > -1)
+				{
+					var lbl : Label = new Label;
+					lbl.text = _method.fullPath;
+					addElement(lbl);
+					
+					var render : ParamItemRenderer = new ParamItemRenderer;
+					render.paramName = "ID";
+					addElement(render);						
+				}
+			}
 			
 		]]>
 	</fx:Script>
