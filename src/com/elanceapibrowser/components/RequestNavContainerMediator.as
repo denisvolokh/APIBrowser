@@ -43,6 +43,7 @@ package com.elanceapibrowser.components
 		{
 			selectedMethod = view.comboAllMethods.selectedItem as Method;
 			
+			view.requestBuilder.method = selectedMethod;
 			view.queryBuilder.method = selectedMethod;
 			
 			view.buttonSend.enabled = (selectedMethod != null);

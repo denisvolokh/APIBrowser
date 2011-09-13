@@ -30,7 +30,7 @@
 	<s:HGroup verticalAlign="middle"
 			  width="100%"
 			  paddingLeft="20">
-		<components:QueryBuilderComponent id="queryBuilder"/>
+		<components:RequestBuilderComponent id="requestBuilder"/>
 	</s:HGroup>
 	
 	
@@ -48,14 +48,7 @@
 			  paddingRight="20">
 		<s:Label text="Parameters:" fontSize="16"/>
 		<s:VGroup width="100%">
-			<s:Form width="100%">
-				<s:FormItem label="Invoice ID:">
-					<s:TextInput />
-				</s:FormItem>
-				<s:FormItem label="App ID:">
-					<s:TextInput />
-				</s:FormItem>
-			</s:Form>			
+			<components:QueryBuilderComponent id="queryBuilder"/>		
 		</s:VGroup>
 	</s:VGroup>
 	
@@ -63,11 +56,6 @@
 	<s:HGroup width="100%"
 			  horizontalAlign="right"
 			  verticalAlign="middle">
-		<s:HGroup gap="5"
-				  width="100%">
-			<s:Label text="Preview Url:" fontSize="14"/>	
-			<s:Label id="lblPreviewUrl" text="/api/reguest?q=1&amp;w=2" fontSize="14"/>
-		</s:HGroup>
 		<s:Button id="buttonSend"
 				  label="Send"
 				  enabled="false"/>	

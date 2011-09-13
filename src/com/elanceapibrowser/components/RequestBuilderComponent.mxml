@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  verticalAlign="middle"
+		  height="30"
+		  gap="0">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.elanceapibrowser.model.Method;
+			
+			import mx.controls.Label;
+			
+			private var _queryParams : Array;
+			
+			public function set queryParams(value : Array):void
+			{
+				_queryParams = value;
+			}
+			
+			private var _method : Method;
+	
+			public function set method(value:Method):void
+			{
+				_method = value;
+				
+				renderQuery();
+			}
+	
+			private function renderQuery():void
+			{
+				this.removeAllElements();
+				
+				if (_method.fullPath.indexOf("{") > -1 && _method.fullPath.indexOf("}") > -1)
+				{
+					var lbl : Label = new Label;
+					lbl.text = _method.fullPath;
+					addElement(lbl);
+					
+					var render : RequestItemRenderer = new RequestItemRenderer;
+					render.paramName = "ID";
+					addElement(render);						
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+</s:HGroup>
