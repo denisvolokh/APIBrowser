@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
 		 xmlns:s="library://ns.adobe.com/flex/spark"
-		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 width="100">
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
 
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
 			
+			import spark.events.TextOperationEvent;
+			
 			[Bindable]
 			public var paramName : String;
+			
+			[Bindable]
+			public var paramValue : String = "";
 			
 			protected function linkParamLink_clickHandler(event:MouseEvent):void
 			{
@@ -23,10 +27,12 @@
 			
 			protected function inputParamValue_focusOutHandler(event:FocusEvent):void
 			{
-				if (inputParamValue.text == "")
-				{
-					currentState = "INIT";
-				}
+				currentState = "INIT";
+			}
+			
+			protected function inputParamValue_changeHandler(event:TextOperationEvent):void
+			{
+				paramValue = inputParamValue.text;
 			}
 			
 		]]>
@@ -38,17 +44,19 @@
 							paddingRight="5"/>
 	</s:layout>
 
-	<mx:LinkButton id="linkParamLink"
-				   label="{ paramName }"
-				   includeIn="INIT"
-				   click="linkParamLink_clickHandler(event)"
-				   textDecoration="underline"
-				   toolTip="Invoice ID"/>
+	<mx:LinkButton id="linkParamLink" includeIn="INIT"
+				   label="{ ( paramValue != '' )?paramValue:paramName }"
+				   click="linkParamLink_clickHandler(event)" 
+				   paddingBottom="2"
+				   paddingLeft="3"
+				   paddingRight="3"
+				   textDecoration="underline" toolTip="Invoice ID"/>
 
 	<s:TextInput id="inputParamValue"
 				 includeIn="EDIT"
-				 width="100%"
+				 width="60"
 				 textAlign="center"
+				 change="inputParamValue_changeHandler(event)"
 				 focusOut="inputParamValue_focusOutHandler(event)"/>
 
 	<s:states>

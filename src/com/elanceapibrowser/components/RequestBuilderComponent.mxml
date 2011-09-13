@@ -12,11 +12,15 @@
 			
 			import mx.controls.Label;
 			
-			private var _queryParams : Array;
+			private var labelQueryLabel : Label;
 			
-			public function set queryParams(value : Array):void
+			private var _queryString : String;
+			
+			public function set queryString(value : String):void
 			{
-				_queryParams = value;
+				_queryString = value;
+				
+				labelQueryLabel.text = _queryString;
 			}
 			
 			private var _method : Method;
@@ -42,6 +46,10 @@
 					render.paramName = "ID";
 					addElement(render);						
 				}
+				
+				this.labelQueryLabel = new Label;
+				this.labelQueryLabel.percentWidth = 100;
+				addElement(this.labelQueryLabel);
 			}
 			
 		]]>

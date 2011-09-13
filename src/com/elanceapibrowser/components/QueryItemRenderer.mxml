@@ -7,6 +7,9 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.elanceapibrowser.events.QueryBuilderEvent;
+			
+			import spark.events.TextOperationEvent;
 			
 			[Bindable]
 			public var paramName : String;
@@ -14,9 +17,14 @@
 			[Bindable]
 			public var isRequired : Boolean = true;
 			
+			protected function inputParam_changeHandler(event:TextOperationEvent):void
+			{
+				this.dispatchEvent(new QueryBuilderEvent(QueryBuilderEvent.EVENT_PARAM_CHANGED, paramName, inputParam.text));
+			}
+			
 		]]>
 	</fx:Script>
 	
-	<s:TextInput width="100%"/>
+	<s:TextInput id="inputParam" width="100%" change="inputParam_changeHandler(event)"/>
 	
 </s:FormItem>

@@ -7,7 +7,7 @@ package com.elanceapibrowser.model
 		}
 		
 		public var requestParams : Array = ["invoiceID", "userID", "bidID"];
-		public var queryParams : Array = ["someA", "someB", "someC"];
+		public var queryParams : Array = ["someA", "someB", "someC", "someD"];
 		
 		public var path : String;
 		public var fullPath : String;

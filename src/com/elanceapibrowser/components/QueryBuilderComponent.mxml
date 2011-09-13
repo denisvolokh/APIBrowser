@@ -2,7 +2,7 @@
 <s:Form xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		xmlns:mx="library://ns.adobe.com/flex/mx" 
-		width="100%" height="50" 
+		width="100%" height="100%" 
 		xmlns:components="com.elanceapibrowser.components.*">
 	
 	<fx:Script>
@@ -31,10 +31,36 @@
 				{
 					var param : QueryItemRenderer = new QueryItemRenderer;
 					param.paramName = item;
+					//param.addEventListener(QueryBuilderEvent.EVENT_PARAM_CHANGED, handleParamChanged);
 					
 					addElement(param);
 				}
 			}
+			
+			public function getQueryString():String
+			{
+				var str : String = "?";
+				
+				for (var i : int = 0; i < this.numElements; i++)
+				{
+					var item : QueryItemRenderer = this.getElementAt(i) as QueryItemRenderer;
+					
+					if (item.isRequired || item.inputParam.text != "")
+					{
+						str += item.paramName;
+						str	+= "="; 
+						str += item.inputParam.text; 
+						str += (i != this.numElements - 1)?"&":"";								
+					}
+				}
+				
+				return str;
+			}
+			
+			/* private function handleParamChanged(event : QueryBuilderEvent):void
+			{
+				
+			} */
 
 		]]>
 	</fx:Script>

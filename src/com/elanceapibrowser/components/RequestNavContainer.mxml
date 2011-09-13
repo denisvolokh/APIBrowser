@@ -47,9 +47,11 @@
 			  paddingLeft="20"
 			  paddingRight="20">
 		<s:Label text="Parameters:" fontSize="16"/>
-		<s:VGroup width="100%">
-			<components:QueryBuilderComponent id="queryBuilder"/>		
-		</s:VGroup>
+			<s:Scroller width="100%" height="100">
+				<s:VGroup width="100%">
+					<components:QueryBuilderComponent id="queryBuilder"/>
+				</s:VGroup>	
+			</s:Scroller>
 	</s:VGroup>
 	
 	<s:Spacer height="100%"/>

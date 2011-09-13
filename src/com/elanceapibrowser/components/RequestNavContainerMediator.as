@@ -2,6 +2,7 @@ package com.elanceapibrowser.components
 {
 	import com.elanceapibrowser.events.ExecuteMethodEvent;
 	import com.elanceapibrowser.events.GetAllMethodsEvent;
+	import com.elanceapibrowser.events.QueryBuilderEvent;
 	import com.elanceapibrowser.model.AppModel;
 	import com.elanceapibrowser.model.Method;
 	import com.elanceapibrowser.model.MethodParams;
@@ -36,7 +37,14 @@ package com.elanceapibrowser.components
 			eventMap.mapListener(view.buttonSend, MouseEvent.CLICK, handleButtonSend);
 			eventMap.mapListener(view.comboAllMethods, IndexChangeEvent.CHANGE, handleComboAllMethods);
 			
+			eventMap.mapListener(view.queryBuilder, QueryBuilderEvent.EVENT_PARAM_CHANGED, handleQueryParamChanged);
+			
 			dispatch(new GetAllMethodsEvent(GetAllMethodsEvent.EVENT_GET_ALL_METHODS));	
+		}
+		
+		private function handleQueryParamChanged(event : QueryBuilderEvent):void
+		{
+			view.requestBuilder.queryString = view.queryBuilder.getQueryString();	
 		}
 		
 		private function handleComboAllMethods(event : IndexChangeEvent):void
@@ -44,7 +52,9 @@ package com.elanceapibrowser.components
 			selectedMethod = view.comboAllMethods.selectedItem as Method;
 			
 			view.requestBuilder.method = selectedMethod;
+			
 			view.queryBuilder.method = selectedMethod;
+			view.requestBuilder.queryString = view.queryBuilder.getQueryString();
 			
 			view.buttonSend.enabled = (selectedMethod != null);
 		}
