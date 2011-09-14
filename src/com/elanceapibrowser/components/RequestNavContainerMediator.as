@@ -61,10 +61,13 @@ package com.elanceapibrowser.components
 		
 		private function handleButtonSend(event : *):void
 		{
-			var params : MethodParams = new MethodParams;
-			params.fullpath = selectedMethod.fullPath;
-			params.signature = selectedMethod.signature;
-			dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD, params));
+			if (view.queryBuilder.validateQueryBuilder())
+			{
+				var params : MethodParams = new MethodParams;
+				params.fullpath = selectedMethod.fullPath;
+				params.signature = selectedMethod.signature;
+				dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD, params));				
+			}
 		}
 		
 		private function handleGetAllMethodsResult(event : GetAllMethodsEvent):void

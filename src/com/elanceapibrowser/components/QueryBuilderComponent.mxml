@@ -57,10 +57,19 @@
 				return str;
 			}
 			
-			/* private function handleParamChanged(event : QueryBuilderEvent):void
+			public function validateQueryBuilder():Boolean
 			{
+				for (var i : int = 0; i < this.numElements; i++)
+				{
+					var item : QueryItemRenderer = this.getElementAt(i) as QueryItemRenderer;
+					if (item.validateParameter() == false)
+					{
+						return false;
+					}
+				}
 				
-			} */
+				return true;
+			}
 
 		]]>
 	</fx:Script>

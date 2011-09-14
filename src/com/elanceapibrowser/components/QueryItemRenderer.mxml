@@ -9,6 +9,9 @@
 		<![CDATA[
 			import com.elanceapibrowser.events.QueryBuilderEvent;
 			
+			import mx.events.ValidationResultEvent;
+			import mx.validators.ValidationResult;
+			
 			import spark.events.TextOperationEvent;
 			
 			[Bindable]
@@ -22,9 +25,29 @@
 				this.dispatchEvent(new QueryBuilderEvent(QueryBuilderEvent.EVENT_PARAM_CHANGED, paramName, inputParam.text));
 			}
 			
+			public function validateParameter():Boolean
+			{
+				if (this.isRequired)
+				{
+					return (this.inputParamValidator.validate().type == ValidationResultEvent.VALID);
+				}
+				
+				return true
+			}
+			
 		]]>
 	</fx:Script>
 	
-	<s:TextInput id="inputParam" width="100%" change="inputParam_changeHandler(event)"/>
+	<fx:Declarations>
+		<mx:StringValidator id="inputParamValidator" 
+							required="true"  
+							source="{inputParam}" 
+							property="text" 
+							requiredFieldError="{ paramName } is a required parameter."/>
+	</fx:Declarations>
+	
+	<s:TextInput id="inputParam" 
+				 width="100%" 
+				 change="inputParam_changeHandler(event)"/>
 	
 </s:FormItem>
