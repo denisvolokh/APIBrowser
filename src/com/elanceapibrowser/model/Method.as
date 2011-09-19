@@ -6,8 +6,20 @@ package com.elanceapibrowser.model
 		{
 		}
 		
-		public var requestParams : Array = ["invoiceID", "userID", "bidID"];
-		public var queryParams : Array = ["someA", "someB", "someC", "someD"];
+		public function findRequestParamByName(name : String):MethodParam
+		{
+			for each (var p : MethodParam in requestParams)
+			{
+				if (p.name == name) return p
+			}
+			
+			return null;
+		}
+		
+		public var methodsInjectablesHash : Object;
+		
+		public var requestParams : Array = [];
+		public var queryParams : Array = [];
 		
 		public var path : String;
 		public var fullPath : String;

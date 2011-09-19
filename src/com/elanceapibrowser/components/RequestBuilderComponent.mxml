@@ -9,6 +9,7 @@
 	<fx:Script>
 		<![CDATA[
 			import com.elanceapibrowser.model.Method;
+			import com.elanceapibrowser.model.MethodParam;
 			
 			import mx.controls.Label;
 			
@@ -36,19 +37,53 @@
 			{
 				this.removeAllElements();
 				
-				if (_method.fullPath.indexOf("{") > -1 && _method.fullPath.indexOf("}") > -1)
+				if (_method.requestParams.length > 0)
+				{
+					var splitted : Array = _method.fullPath.split("}");
+					for each (var str : String in splitted)
+					{
+						var partion : Label = new Label();
+						partion.setStyle("fontSize", 16);
+						partion.setStyle("paddingLeft", 0);
+						partion.setStyle("paddingRight", 0);
+						
+						var render : RequestItemRenderer = new RequestItemRenderer;
+						if (str.indexOf("{") >= 0)
+						{
+							var s :	Array = str.split("{");
+							
+							partion.text = s[0];
+							addElement(partion);
+							
+							render.paramName = s[1];
+							var p : MethodParam = _method.findRequestParamByName(s[1])
+							if (p && p.value != null)
+							{
+								render.paramValue = p.value;
+							}
+							addElement(render);		
+						}
+						else
+						{
+							if (str != "")
+							{
+								partion.text = str;
+								addElement(partion);	
+							}
+						}
+					}
+				}
+				else
 				{
 					var lbl : Label = new Label;
 					lbl.text = _method.fullPath;
+					lbl.setStyle("fontSize", 16);
 					addElement(lbl);
-					
-					var render : RequestItemRenderer = new RequestItemRenderer;
-					render.paramName = "ID";
-					addElement(render);						
 				}
 				
-				this.labelQueryLabel = new Label;
-				this.labelQueryLabel.percentWidth = 100;
+				labelQueryLabel = new Label;
+				labelQueryLabel.percentWidth = 100;
+				labelQueryLabel.setStyle("fontSize", 16);
 				addElement(this.labelQueryLabel);
 			}
 			

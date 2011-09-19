@@ -5,7 +5,7 @@ package com.elanceapibrowser.components
 	import com.elanceapibrowser.events.QueryBuilderEvent;
 	import com.elanceapibrowser.model.AppModel;
 	import com.elanceapibrowser.model.Method;
-	import com.elanceapibrowser.model.MethodParams;
+	import com.elanceapibrowser.model.MethodParam;
 	
 	import flash.events.MouseEvent;
 	
@@ -63,7 +63,7 @@ package com.elanceapibrowser.components
 		{
 			if (view.queryBuilder.validateQueryBuilder())
 			{
-				var params : MethodParams = new MethodParams;
+				var params : MethodParam = new MethodParam;
 				params.fullpath = selectedMethod.fullPath;
 				params.signature = selectedMethod.signature;
 				dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD, params));				

@@ -8,6 +8,7 @@
 	<fx:Script>
 		<![CDATA[
 			import com.elanceapibrowser.model.Method;
+			import com.elanceapibrowser.model.MethodParam;
 			
 			private var _method : Method;
 			
@@ -27,12 +28,10 @@
 			{
 				removeAllElements();
 				
-				for each (var item : String in method.queryParams)
+				for each (var item : MethodParam in method.queryParams)
 				{
 					var param : QueryItemRenderer = new QueryItemRenderer;
-					param.paramName = item;
-					//param.addEventListener(QueryBuilderEvent.EVENT_PARAM_CHANGED, handleParamChanged);
-					
+					param.paramName = item.name;
 					addElement(param);
 				}
 			}

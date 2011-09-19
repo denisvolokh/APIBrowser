@@ -6,51 +6,55 @@
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
-			
+
 			import spark.events.TextOperationEvent;
-			
+
 			[Bindable]
-			public var paramName : String;
-			
+			public var paramName:String;
+
 			[Bindable]
-			public var paramValue : String = "";
-			
+			public var paramValue:String="";
+
 			protected function linkParamLink_clickHandler(event:MouseEvent):void
 			{
 				currentState="EDIT"
 			}
-			
+
 			protected function state1_enterStateHandler(event:FlexEvent):void
 			{
 				inputParamValue.setFocus();
 			}
-			
+
 			protected function inputParamValue_focusOutHandler(event:FocusEvent):void
 			{
-				currentState = "INIT";
+				currentState="INIT";
 			}
-			
+
 			protected function inputParamValue_changeHandler(event:TextOperationEvent):void
 			{
-				paramValue = inputParamValue.text;
+				paramValue=inputParamValue.text;
 			}
-			
 		]]>
 	</fx:Script>
 
 
 	<s:layout>
-		<s:HorizontalLayout paddingLeft="5"
-							paddingRight="5"/>
+		<s:HorizontalLayout paddingLeft="0"
+							paddingRight="0"/>
 	</s:layout>
 
-	<mx:LinkButton id="linkParamLink" includeIn="INIT"
+	<mx:LinkButton id="linkParamLink"
+				   includeIn="INIT"
 				   label="{ ( paramValue != '' )?paramValue:paramName }"
-				   click="linkParamLink_clickHandler(event)" 
+				   click="linkParamLink_clickHandler(event)"
+				   color="#1B33EC"
+				   fontSize="14"
+				   fontWeight="bold"
 				   paddingBottom="2"
-				   paddingLeft="3"
-				   paddingRight="3"
-				   textDecoration="underline" toolTip="Invoice ID"/>
+				   paddingLeft="2"
+				   paddingRight="2"
+				   textDecoration="underline"
+				   toolTip="Invoice ID"/>
 
 	<s:TextInput id="inputParamValue"
 				 includeIn="EDIT"

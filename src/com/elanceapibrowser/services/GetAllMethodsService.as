@@ -4,7 +4,7 @@ package com.elanceapibrowser.services
 	import com.elanceapibrowser.events.GetAllMethodsEvent;
 	import com.elanceapibrowser.model.AppModel;
 	import com.elanceapibrowser.model.Method;
-	import com.elanceapibrowser.model.MethodParams;
+	import com.elanceapibrowser.model.MethodParam;
 	
 	import flash.display.Loader;
 	import flash.net.URLRequest;
@@ -25,7 +25,7 @@ package com.elanceapibrowser.services
 			service.url = AppModel.apiBaseUrl + "reflection/apis";
 		}
 		
-		override public function load(params : MethodParams):void
+		override public function load(params : MethodParam):void
 		{
 			service.send();
 			
@@ -48,8 +48,30 @@ package com.elanceapibrowser.services
 						method[prop] = m[prop];
 					}
 				}
+				
+				if (method.methodsInjectablesHash)
+				{
+					var obj : Object = method.methodsInjectablesHash
+					for (var param : String in obj)
+					{
+						var methodParam : MethodParam = new MethodParam;
+						if (obj[param].providersHash.hasOwnProperty("PathParamProvider"))
+						{
+							methodParam.name = param;
+							method.requestParams.push(methodParam);
+						}
+						
+						if (obj[param].providersHash.hasOwnProperty("QueryParamProvider") || obj[param].providersHash.hasOwnProperty("ContextParamProvider"))
+						{
+							methodParam.name = param;
+							method.queryParams.push(methodParam);
+						}
+					}
+				}
 				model.allMethodsCollection.addItem(method);
 			}
+			
+			//providersHash: PathParamProvider | QueryParamProvider
 			
 			dispatch(new GetAllMethodsEvent(GetAllMethodsEvent.EVENT_GET_ALL_METHODS_RESULT));
 		}

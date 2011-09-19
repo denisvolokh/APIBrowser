@@ -1,6 +1,6 @@
 package com.elanceapibrowser.events
 {
-	import com.elanceapibrowser.model.MethodParams;
+	import com.elanceapibrowser.model.MethodParam;
 	
 	import flash.events.Event;
 	
@@ -10,9 +10,9 @@ package com.elanceapibrowser.events
 		public static const EVENT_GET_ALL_METHODS_RESULT : String = "getAllMethodsResultEvent";
 		public static const EVENT_GET_ALL_METHODS_FAULT : String = "getAllMethodsFaultEvent";
 		
-		public var params : MethodParams;
+		public var params : MethodParam;
 		
-		public function GetAllMethodsEvent(type:String, params : MethodParams = null)
+		public function GetAllMethodsEvent(type:String, params : MethodParam = null)
 		{
 			super(type, true, false);
 			
