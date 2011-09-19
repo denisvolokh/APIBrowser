@@ -1,6 +1,7 @@
 package com.elanceapibrowser.services
 {
 	import com.elanceapibrowser.model.AppModel;
+	import com.elanceapibrowser.model.Method;
 	import com.elanceapibrowser.model.MethodParam;
 	
 	import mx.rpc.events.FaultEvent;
@@ -26,7 +27,7 @@ package com.elanceapibrowser.services
 		
 		protected var service : HTTPService;
 		
-		public function load(params : MethodParam):void
+		public function load(method : Method):void
 		{
 			
 		}

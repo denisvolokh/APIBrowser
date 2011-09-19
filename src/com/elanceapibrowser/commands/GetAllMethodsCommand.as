@@ -21,7 +21,7 @@ package com.elanceapibrowser.commands
 		
 		override public function execute():void
 		{
-			service.load(event.params);
+			service.load(event.method);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package com.elanceapibrowser.events
 {
+	import com.elanceapibrowser.model.Method;
 	import com.elanceapibrowser.model.MethodParam;
 	
 	import flash.events.Event;
@@ -10,18 +11,18 @@ package com.elanceapibrowser.events
 		public static const EVENT_GET_ALL_METHODS_RESULT : String = "getAllMethodsResultEvent";
 		public static const EVENT_GET_ALL_METHODS_FAULT : String = "getAllMethodsFaultEvent";
 		
-		public var params : MethodParam;
+		public var method : Method;
 		
-		public function GetAllMethodsEvent(type:String, params : MethodParam = null)
+		public function GetAllMethodsEvent(type:String, method : Method = null)
 		{
 			super(type, true, false);
 			
-			this.params = params;
+			this.method = method;
 		}
 		
 		override public function clone():Event
 		{
-			return new GetAllMethodsEvent(type, params);
+			return new GetAllMethodsEvent(type, method);
 		}
 	}
 }

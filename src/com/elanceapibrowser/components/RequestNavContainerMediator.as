@@ -63,10 +63,13 @@ package com.elanceapibrowser.components
 		{
 			if (view.queryBuilder.validateQueryBuilder())
 			{
-				var params : MethodParam = new MethodParam;
-				params.fullpath = selectedMethod.fullPath;
-				params.signature = selectedMethod.signature;
-				dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD, params));				
+				var method : Method = new Method;
+				method.fullpathQueryUrl = view.requestBuilder.getReguestParamsString() + view.queryBuilder.getQueryString();
+				method.requestParams = view.requestBuilder.getRequestParams();
+				
+				//params.fullpath = selectedMethod.fullPath;
+				//params.signature = selectedMethod.signature;
+				dispatch(new ExecuteMethodEvent(ExecuteMethodEvent.EVENT_EXECUTE_METHOD, method));				
 			}
 		}
 		

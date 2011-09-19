@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		  xmlns:s="library://ns.adobe.com/flex/spark" 
-		  xmlns:mx="library://ns.adobe.com/flex/mx"
 		  verticalAlign="middle"
 		  height="30"
 		  gap="0">
@@ -11,9 +10,9 @@
 			import com.elanceapibrowser.model.Method;
 			import com.elanceapibrowser.model.MethodParam;
 			
-			import mx.controls.Label;
+			import spark.components.Label;
 			
-			private var labelQueryLabel : Label;
+			private var labelQueryLabel : spark.components.Label;
 			
 			private var _queryString : String;
 			
@@ -85,6 +84,44 @@
 				labelQueryLabel.percentWidth = 100;
 				labelQueryLabel.setStyle("fontSize", 16);
 				addElement(this.labelQueryLabel);
+			}
+			
+			public function getReguestParamsString():String
+			{
+				var url : String = ""
+				for (var i : int = 0; i < this.numElements - 1; i++)
+				{
+					var el : * = this.getElementAt(i)
+					if (el is RequestItemRenderer)
+					{
+						url += (el as RequestItemRenderer).paramValue;
+					}
+					
+					if (el is spark.components.Label)
+					{
+						url += (el as spark.components.Label).text;
+					}
+				}
+				
+				return url;
+			}
+			
+			public function getRequestParams():Array
+			{
+				var params : Array = [];
+				for (var i : int = 0; i < this.numElements - 1; i++)
+				{
+					var el : * = this.getElementAt(i)
+					if (el is RequestItemRenderer)
+					{
+						var param : MethodParam = new MethodParam();
+						param.name = (el as RequestItemRenderer).paramName;
+						param.value = (el as RequestItemRenderer).paramValue;
+						params.push(param);
+					}
+				}
+				
+				return params;
 			}
 			
 		]]>

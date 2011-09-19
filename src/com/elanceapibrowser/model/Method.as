@@ -20,6 +20,9 @@ package com.elanceapibrowser.model
 		
 		public var requestParams : Array = [];
 		public var queryParams : Array = [];
+		public var fullpathQueryUrl : String;
+		
+		
 		
 		public var path : String;
 		public var fullPath : String;

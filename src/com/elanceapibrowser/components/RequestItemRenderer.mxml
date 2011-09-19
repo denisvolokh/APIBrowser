@@ -58,6 +58,7 @@
 
 	<s:TextInput id="inputParamValue"
 				 includeIn="EDIT"
+				 text="{ paramValue }"
 				 width="60"
 				 textAlign="center"
 				 change="inputParamValue_changeHandler(event)"

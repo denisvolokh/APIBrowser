@@ -2,8 +2,21 @@
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:mx="library://ns.adobe.com/flex/mx" 
-			   width="950" height="500" 
+			   width="950" height="500"
+			   creationComplete="application1_creationCompleteHandler(event)"
 			   xmlns:elanceapibrowser="com.elanceapibrowser.*">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var menuItem : ContextMenuItem = new ContextMenuItem("build: 0.0.4");
+				this.contextMenu.customItems.push(menuItem);
+			}
+			
+		]]>
+	</fx:Script>
 	<fx:Declarations>
 		<elanceapibrowser:AppContext contextView="{ this }"/>
 	</fx:Declarations>

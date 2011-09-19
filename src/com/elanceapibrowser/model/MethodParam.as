@@ -12,6 +12,6 @@ package com.elanceapibrowser.model
 		
 		public var name : String;
 		
-		public var value : String = "TEST";
+		public var value : String;
 	}
 }

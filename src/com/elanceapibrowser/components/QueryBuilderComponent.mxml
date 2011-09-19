@@ -38,7 +38,7 @@
 			
 			public function getQueryString():String
 			{
-				var str : String = "?";
+				var str : String = "";
 				
 				for (var i : int = 0; i < this.numElements; i++)
 				{
@@ -46,6 +46,7 @@
 					
 					if (item.isRequired || item.inputParam.text != "")
 					{
+						if (i == 0) str = "?";
 						str += item.paramName;
 						str	+= "="; 
 						str += item.inputParam.text; 
