@@ -11,8 +11,8 @@
 			
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
-				//Security.loadPolicyFile();
-				var menuItem : ContextMenuItem = new ContextMenuItem("build: 0.0.4");
+				//Security.loadPolicyFile("http://elance.com/crossdomain.xml");
+				var menuItem : ContextMenuItem = new ContextMenuItem("build: 0.0.8");
 				this.contextMenu.customItems.push(menuItem);
 			}
 			
