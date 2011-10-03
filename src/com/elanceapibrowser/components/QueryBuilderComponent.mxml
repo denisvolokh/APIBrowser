@@ -36,6 +36,22 @@
 				}
 			}
 			
+			public function getQueryParams():Array
+			{
+				var params : Array = [];
+				
+				for (var i : int = 0; i < this.numElements; i++)
+				{
+					var item : QueryItemRenderer = this.getElementAt(i) as QueryItemRenderer;
+					var param : MethodParam = new MethodParam();
+					param.name = (item as QueryItemRenderer).paramName;
+					param.value = (item as QueryItemRenderer).inputParam.text;
+					params.push(param);
+				}
+				
+				return params;
+			}
+			
 			public function getQueryString():String
 			{
 				var str : String = "";

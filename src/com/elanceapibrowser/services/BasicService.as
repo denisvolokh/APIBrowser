@@ -34,12 +34,12 @@ package com.elanceapibrowser.services
 		
 		protected function onResultHandler(event : ResultEvent):void
 		{
-			service.removeEventListener(ResultEvent.RESULT, onResultHandler);
+			//service.removeEventListener(ResultEvent.RESULT, onResultHandler);
 		}
 		
 		protected function onFaultHandler(event : FaultEvent):void
 		{
-			service.removeEventListener(FaultEvent.FAULT, onFaultHandler);
+			//service.removeEventListener(FaultEvent.FAULT, onFaultHandler);
 		}
 	}
 }

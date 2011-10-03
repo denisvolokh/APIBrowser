@@ -29,8 +29,6 @@ package com.elanceapibrowser.services
 		override public function load(method : Method):void
 		{
 			service.send();
-			
-			model.historyCollection.addItem(method);
 		}
 		
 		override protected function onResultHandler(event : ResultEvent):void

@@ -21,7 +21,7 @@ package com.elanceapibrowser.model
 		
 		public var allMethodsCollection : ArrayCollection = new ArrayCollection;
 		
-		public var historyCollection : ArrayCollection;
+		public var historyCollection : ArrayCollection; // collection of 
 	
 		private function handleHistoryCollectionChanged(event : CollectionEvent):void
 		{

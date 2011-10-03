@@ -66,6 +66,7 @@ package com.elanceapibrowser.components
 				var method : Method = new Method;
 				method.fullpathQueryUrl = view.requestBuilder.getReguestParamsString() + view.queryBuilder.getQueryString();
 				method.requestParams = view.requestBuilder.getRequestParams();
+				method.queryParams = view.queryBuilder.getQueryParams();
 				
 				//params.fullpath = selectedMethod.fullPath;
 				//params.signature = selectedMethod.signature;
