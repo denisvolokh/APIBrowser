@@ -9,6 +9,7 @@ package com.elanceapibrowser.services
 	import flash.display.Loader;
 	import flash.net.URLRequest;
 	
+	import mx.controls.Alert;
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
 	import mx.rpc.http.HTTPService;
@@ -80,6 +81,7 @@ package com.elanceapibrowser.services
 		{
 			super.onFaultHandler(event);
 			
+			mx.controls.Alert.show("Unable to get methods: " + event.fault.faultString);			
 		}
 		
 		private function removeListeners():void
