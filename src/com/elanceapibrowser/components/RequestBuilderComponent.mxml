@@ -31,10 +31,15 @@
 				
 				renderQuery();
 			}
-	
-			private function renderQuery():void
+			
+			public function clear():void
 			{
 				this.removeAllElements();
+			}
+			
+			private function renderQuery():void
+			{
+				clear()
 				
 				if (_method.requestParams.length > 0)
 				{

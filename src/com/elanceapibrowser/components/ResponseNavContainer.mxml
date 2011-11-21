@@ -8,10 +8,12 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	
-	<s:Rect width="100%" height="100%">
-		<s:fill>
-			<s:SolidColor color="#b8ffae" />
-		</s:fill>
-	</s:Rect>
+	<s:TextArea id="textResponse"
+				width="100%"
+				height="100%"
+		        bottom="10"
+				left="10"
+				right="10"
+				top="10"/>
 	
 </s:NavigatorContent>

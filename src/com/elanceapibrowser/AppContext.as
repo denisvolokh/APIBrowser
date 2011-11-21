@@ -8,6 +8,8 @@ package com.elanceapibrowser
 	import com.elanceapibrowser.components.MainPanelMediator;
 	import com.elanceapibrowser.components.RequestNavContainer;
 	import com.elanceapibrowser.components.RequestNavContainerMediator;
+	import com.elanceapibrowser.components.ResponseNavContainer;
+	import com.elanceapibrowser.components.ResponseNavContainerMediator;
 	import com.elanceapibrowser.events.ExecuteMethodEvent;
 	import com.elanceapibrowser.events.GetAllMethodsEvent;
 	import com.elanceapibrowser.model.AppModel;
@@ -33,6 +35,7 @@ package com.elanceapibrowser
 			
 			mediatorMap.mapView(MainPanel, MainPanelMediator);
 			mediatorMap.mapView(RequestNavContainer, RequestNavContainerMediator);
+			mediatorMap.mapView(ResponseNavContainer, ResponseNavContainerMediator);
 			mediatorMap.mapView(HistoryPanel, HistoryPanelMediator);
 			
 			injector.mapSingletonOf(IGetAllMethodsService, GetAllMethodsService);

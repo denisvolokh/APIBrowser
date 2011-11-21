@@ -11,7 +11,7 @@
 			
 			protected function application1_creationCompleteHandler(event:FlexEvent):void
 			{
-				var menuItem : ContextMenuItem = new ContextMenuItem("build: 0.0.8");
+				var menuItem : ContextMenuItem = new ContextMenuItem("build: 0.0.9");
 				this.contextMenu.customItems.push(menuItem);
 			}
 			

@@ -34,6 +34,12 @@
 			{
 				paramValue=inputParamValue.text;
 			}
+			
+			protected function inputParamValue_enterHandler(event:FlexEvent):void
+			{
+				currentState="INIT";
+			}
+			
 		]]>
 	</fx:Script>
 
@@ -61,6 +67,7 @@
 				 text="{ paramValue }"
 				 width="60"
 				 textAlign="center"
+				 enter="inputParamValue_enterHandler(event)"
 				 change="inputParamValue_changeHandler(event)"
 				 focusOut="inputParamValue_focusOutHandler(event)"/>
 

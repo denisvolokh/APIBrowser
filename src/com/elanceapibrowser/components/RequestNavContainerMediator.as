@@ -36,15 +36,31 @@ package com.elanceapibrowser.components
 			eventMap.mapListener(eventDispatcher, GetAllMethodsEvent.EVENT_GET_ALL_METHODS_RESULT, handleGetAllMethodsResult);
 			eventMap.mapListener(view.buttonSend, MouseEvent.CLICK, handleButtonSend);
 			eventMap.mapListener(view.comboAllMethods, IndexChangeEvent.CHANGE, handleComboAllMethods);
+			eventMap.mapListener(view.comboServers, IndexChangeEvent.CHANGE, handleComboServers);
 			
 			eventMap.mapListener(view.queryBuilder, QueryBuilderEvent.EVENT_PARAM_CHANGED, handleQueryParamChanged);
 			
-			dispatch(new GetAllMethodsEvent(GetAllMethodsEvent.EVENT_GET_ALL_METHODS));	
+			view.comboServers.dataProvider = model.serversCollection;
+			view.comboServers.selectedIndex = 0;
+			model.selectedServer = model.serversCollection.getItemAt(0) as String;
+			
+			view.comboAllMethods.enabled = false;
+			dispatch(new GetAllMethodsEvent(GetAllMethodsEvent.EVENT_GET_ALL_METHODS));
 		}
 		
 		private function handleQueryParamChanged(event : QueryBuilderEvent):void
 		{
-			view.requestBuilder.queryString = view.queryBuilder.getQueryString();	
+			view.requestBuilder.queryString = view.queryBuilder.getQueryString();
+		}
+		
+		private function handleComboServers(event : IndexChangeEvent):void
+		{
+			view.requestBuilder.clear();
+			
+			view.comboAllMethods.selectedIndex = -1;
+			view.comboAllMethods.dataProvider = null;
+			view.comboAllMethods.enabled = false;
+			dispatch(new GetAllMethodsEvent(GetAllMethodsEvent.EVENT_GET_ALL_METHODS));
 		}
 		
 		private function handleComboAllMethods(event : IndexChangeEvent):void
@@ -77,6 +93,7 @@ package com.elanceapibrowser.components
 		private function handleGetAllMethodsResult(event : GetAllMethodsEvent):void
 		{
 			view.comboAllMethods.dataProvider = model.allMethodsCollection;
+			view.comboAllMethods.enabled = true;
 		}
 	}
 }

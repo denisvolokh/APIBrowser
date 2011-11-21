@@ -13,6 +13,8 @@ package com.elanceapibrowser.events
 		
 		public var method : Method;
 		
+		public var content : String;
+		
 		public function ExecuteMethodEvent(type:String, method : Method = null)
 		{
 			super(type, true, false);

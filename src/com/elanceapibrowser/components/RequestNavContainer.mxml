@@ -3,7 +3,9 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx" 
 		 width="100%" height="100%"
-		 label="Request" xmlns:components="com.elanceapibrowser.components.*">
+		 label="Request"
+		 xmlns:components="com.elanceapibrowser.components.*">
+	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
@@ -17,14 +19,23 @@
 						  gap="0"/>
 	</s:layout>
 	
-	<s:VGroup width="100%"
-			  paddingLeft="20"
-			  paddingRight="20">
-		<s:Label text="API Methods" fontSize="16"/>
-		<s:ComboBox id="comboAllMethods" 
-					width="100%"
-					labelField="signature"/>
-	</s:VGroup>
+	<s:HGroup paddingLeft="20"
+			  paddingRight="20"
+			  width="100%">
+		<s:VGroup>
+			<s:Label text="API Server" fontSize="16"/>
+			<s:ComboBox id="comboServers"
+						selectedIndex="0"
+						width="250"/>
+		</s:VGroup>
+		<s:VGroup width="100%">
+			<s:Label text="API Methods" fontSize="16"/>
+			<s:ComboBox id="comboAllMethods" 
+						width="100%"
+						labelField="signature"/>
+		</s:VGroup>	
+	</s:HGroup>
+	
 	
 	<s:Spacer height="10"/>
 	<s:HGroup verticalAlign="middle"

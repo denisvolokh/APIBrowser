@@ -23,11 +23,12 @@ package com.elanceapibrowser.services
 		{
 			super();
 			
-			service.url = AppModel.apiBaseUrl + "reflection/apis";
+			//service.url = model.selectedServer + "reflection/apis";
 		}
 		
 		override public function load(method : Method):void
 		{
+			service.url = model.getAPIUrl();
 			service.send();
 		}
 		
